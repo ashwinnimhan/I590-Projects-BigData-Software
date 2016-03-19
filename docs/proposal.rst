@@ -1,91 +1,91 @@
-Project Proposal (In Progress)
-===============================================================================
+================
+Project Proposal
+================
+==================================================
+Exploratory Data Analysis of English Wikipedia
+==================================================
 
-Your Title goes here
--------------------------------------------------------------------------------
-
-Description goes here
-
+******
 Team
--------------------------------------------------------------------------------
-(YOU CAN HAVE UP TO 3 PEOPLE IN A TEAM, IF YOU WANT MORE, PLEASE
-BE SURE TO CONTACT US)
-  * Fullname, IU Username, IU GitHub Username, Portal Username (Lead)
-  * Fullname, IU Username, IU GitHub Username, Portal Username
-  * Fullname, IU Username, IU GitHub Username, Portal Username
+******
+1. Ashwin Nimhan, animhan@indiana.edu, animhan, animhan
+2. Manashree Rao, manarao@indiana.edu, manarao, Manashree
 
-Role
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+******
+Roles
+******
+1. Deployment - Ashwin and Manashree
+2. Configuration - Manashree
+3. Algorithm - Ashwin and Manashree
+4. Analytics - Ashwin and Manashree
+5. Visualization - Ashwin
 
-* Deployment: Member A
-* Configuration: Member B
-* Database: Member C
-* Map/Reduce Functions: Member A
-* Algorithm: Member C
-* Plot: Member C
-
+**********
 Artifacts
--------------------------------------------------------------------------------
+**********
+- [----]
+- [----]
 
-* Put here a list of artifacts that you will create (this can be 
-  filled out at a later time)
-
+******************************
 List of Technologies
--------------------------------------------------------------------------------
-
+******************************
 Development Languages
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-* Python
-* Java
+---------------------
+- Python
+- Javascript
+- Java
 
 Software Tools
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-* Ansible
-* Hadoop
-* Pig
+---------------------
+- Ansible
+- Apache Spark
+- MLlib
+- GraphX
+- SparkSQL
+- Spark Streaming
+- NodeJS
+- MongoDB
+- Nginx
+- D3.js
+- Mesos
+- Parquet
 
 Compute Resources
--------------------------------------------------------------------------------
-
-* OpenStack in FutureSystems
+---------------------
+- OpenStack in FutureSystems
 
 System Requirements
--------------------------------------------------------------------------------
-
-* Size: 10 VM instances
-* OS: Ubuntu 14.04 LTS
-* Storage: 500GB
+---------------------
+- Size: 12 VM instances with m1.medium 
+- OS: Ubuntu 14.04 LTS
+- Storage: 480GB
 
 List of DataSets
--------------------------------------------------------------------------------
-
-* Big Text From norvig.com
-* Population from census.gov
+---------------------
+- English Wikipedia data dump latest (https://dumps.wikimedia.org/enwiki/)
+- English Wikipedia pageviews by second (https://datahub.io/dataset/english-wikipedia-pageviews-by-second)
+- Wikipedia Clickstream: Jan-Feb 2015 (https://datahub.io/dataset/wikipedia-clickstream)
+- Live Edit Stream for English Wikipedia (socket listening to stream.wikimedia.org/rc)
+- Other supporting datasets as required for enrichment (https://datahub.io/organization/wikimedia)
 
 Schedule
--------------------------------------------------------------------------------
-
-* Week 1: Initial Meeting
-* Week 2: Proposal
-* Week 3: Discussion
-* Week 4: Presentation
-* Week 5: Refine raw dataset
-* Week 6: Build systems
-* Week 7: Develop modules, test run
-* Week 8: Final Report, Review, Submission
+-----------
+- Week 1: Initial Meeting
+- Week 2: Proposal
+- Week 3: Discussion
+- Week 4: Presentation
+- Week 5: Process data into required format
+- Week 6: Build systems
+- Week 7: Develop modules, test run
+- Week 8: Final Report, Review, Submission
 
 Project Style and Type
--------------------------------------------------------------------------------
-
-* Basic
-* Deployment
+-----------------------
+- Bonus
+- Deployment
+- Analytics
 
 Acknowledgement
--------------------------------------------------------------------------------
-
-This project idea is obtained from the following sources:
-
-* Running Hadoop Cluster MR1 - http://www.michael-noll.com/tutorials/running-hadoop-on-ubuntu-linux-multi-node-cluster/
-*
+---------------------
+- https://datahub.io/organization/wikimedia
+- Spark tutorials online

@@ -23,8 +23,8 @@ Roles
 **********
 Artifacts
 **********
-- [----]
-- [----]
+- Ansible roles for deployment of Spark, HDFS, YARN.
+- Analytics scripts on Spark
 
 ******************************
 List of Technologies

@@ -83,7 +83,10 @@ Project Style and Type
 -----------------------
 - Bonus
 - Deployment
+  -  Setup of Spark, HDFS and YARN using Ansible scripts.
 - Analytics
+  -  Analyzing English Wikipedia Data to derive insights using the above framework.
+
 
 Acknowledgement
 ---------------------

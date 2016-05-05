@@ -62,8 +62,7 @@ System Requirements
 
 List of DataSets
 ---------------------
-- English Wikipedia data dump latest (https://dumps.wikimedia.org/enwiki/)
-- English Wikipedia pageviews by second (https://datahub.io/dataset/english-wikipedia-pageviews-by-second)
+- English Wikipedia pageviews by second (https://ckannet-storage.commondatastorage.googleapis.com/2015-04-26T22:07:22.853Z/pageviews-by-second-tsv.gz)
 - Wikipedia Clickstream: March 2016 (https://s3-eu-west-1.amazonaws.com/pfigshare-u-files/4901611/2016_03_clickstream.tsv.gz)
 - Live Edit Stream for English Wikipedia (socket listening to stream.wikimedia.org/rc)
 - Other supporting datasets as required for enrichment (https://datahub.io/organization/wikimedia)

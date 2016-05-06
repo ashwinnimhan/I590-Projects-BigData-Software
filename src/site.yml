@@ -1,0 +1,63 @@
+---
+- name: Artifact Operations
+  hosts: frontendnodes
+  vars:
+    download_dir: "/tmp"
+    db_dir: "/tmp/wiki"
+    scripts_dir: "/tmp/scripts"
+    datasets:
+      1: "https://ckannet-storage.commondatastorage.googleapis.com/2015-04-26T22:07:22.853Z/pageviews-by-second-tsv.gz"
+      2: "https://s3-eu-west-1.amazonaws.com/pfigshare-u-files/5036383/2015_02_en_clickstream.tsv.gz"
+
+  tasks:
+    - name: prepare the data directory
+      file:
+        path: "{{ item }}"
+        state: directory
+      with_items:
+        - "{{ download_dir }}"
+        - "{{ db_dir }}"
+
+    - name: fix permissions
+      become: yes
+      file:
+        path: "{{ db_dir }}"
+        owner: cc
+        group: cc
+        recurse: yes
+
+    - name: download Page-views data
+      get_url:
+        url: "{{ datasets.1 }}"
+        dest: "{{ db_dir }}"
+
+    - name: download Click-stream data
+      get_url:
+        url: "{{ datasets.2 }}"
+        dest: "{{ db_dir }}"
+    
+    - name: extract
+      become: yes
+
+    - name: fix permissions
+      become: yes
+      file:
+        path: "{{ download_dir }}"
+        owner: hadoop
+        group: hadoop
+        recurse: yes
+
+    - name: import databases into hdfs
+      become: yes
+      become_user: hadoop
+      shell: "sh -lc 'hadoop dfs -put {{ db_dir }} /'"
+
+    - name: copy the analysis scripts
+      become: yes
+      copy:
+        src: "{{ item }}"
+        dest: "{{ scripts_dir }}/{{ item | basename }}"
+        owner: cc
+      with_items:
+        - ./clickstream.py
+        - ./pageviews.py

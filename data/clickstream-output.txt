@@ -1,0 +1,227 @@
+------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------
+root
+ |-- curr_id: string (nullable = true)
+ |-- curr_title: string (nullable = true)
+ |-- no: string (nullable = true)
+ |-- prev_id: string (nullable = true)
+ |-- prev_title: string (nullable = true)
+ |-- typeOf: string (nullable = true)
+
++--------+-------------+---+--------+--------------------+------+
+| curr_id|   curr_title| no| prev_id|          prev_title|typeOf|
++--------+-------------+---+--------+--------------------+------+
+| 3632887|           !!|121|        |        other-google| other|
+| 3632887|           !!| 93|        |     other-wikipedia| other|
+| 3632887|           !!| 46|        |         other-empty| other|
+| 3632887|           !!| 10|        |         other-other| other|
+| 3632887|           !!| 11|   64486|  !_(disambiguation)| other|
+| 2556962|  !!!_(album)| 19| 2061699|       Louden_Up_Now|  link|
+| 2556962|  !!!_(album)| 25|        |         other-empty| other|
+| 2556962|  !!!_(album)| 16|        |        other-google| other|
+| 2556962|  !!!_(album)| 44|        |     other-wikipedia| other|
+| 2556962|  !!!_(album)| 15|   64486|  !_(disambiguation)|  link|
+| 2556962|  !!!_(album)|297|  600744|                 !!!|  link|
+| 6893310|!Hero_(album)| 11|        |         other-empty| other|
+| 6893310|!Hero_(album)| 26| 1921683|               !Hero|  link|
+| 6893310|!Hero_(album)| 16|        |     other-wikipedia| other|
+| 6893310|!Hero_(album)| 23|        |        other-google| other|
+|22602473|   !Oka_Tokat| 16| 8127304|     Jericho_Rosales|  link|
+|22602473|   !Oka_Tokat| 20|35978874|List_of_telenovel...|  link|
+|22602473|   !Oka_Tokat| 57|        |        other-google| other|
+|22602473|   !Oka_Tokat| 12|        |     other-wikipedia| other|
+|22602473|   !Oka_Tokat| 23|        |         other-empty| other|
++--------+-------------+---+--------+--------------------+------+
+only showing top 20 rows
+
+------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------
+Top articles ..... 
+Writing query for top 10 wiki articles in sparkSQL to wiki to HDFS. Displaying top 10 ........
++--------------------+---------+
+|          curr_title|  sum(no)|
++--------------------+---------+
+|           Main_Page|127500620|
+| 87th_Academy_Awards|  2559794|
+|Fifty_Shades_of_Grey|  2326175|
+|               Alive|  2244781|
+|          Chris_Kyle|  1709341|
+|Fifty_Shades_of_G...|  1683892|
+|      Deaths_in_2015|  1614577|
+|      Birdman_(film)|  1545842|
+|Islamic_State_of_...|  1406530|
+|     Stephen_Hawking|  1384193|
++--------------------+---------+
+only showing top 10 rows
+
+------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------
+Top Referers .... 
+Writing query for Top 50 Referers to wiki to HDFS. Displaying only top 10 ........
++-------------------+----------+
+|         prev_title|   sum(no)|
++-------------------+----------+
+|       other-google|1496209976|
+|        other-empty| 347693595|
+|    other-wikipedia| 129772279|
+|        other-other|  77569671|
+|         other-bing|  65962792|
+|        other-yahoo|  48501171|
+|          Main_Page|  29923502|
+|      other-twitter|  19241298|
+|     other-facebook|   2314026|
+|87th_Academy_Awards|   1680675|
++-------------------+----------+
+only showing top 10 rows
+------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------
+Trending on Social Media .... 
+Writing query for Top 50 trending articles in twitter in feb 2015 to HDFS. Displaying only top 5 ........
++--------------------+-------+
+|          curr_title|sum(no)|
++--------------------+-------+
+|    Johnny_Knoxville| 198908|
+|      Peter_Woodcock| 126259|
+|2002_Tampa_plane_...| 119906|
+|         Sn_ong_Cave| 116012|
+|       The_boy_Jones| 114401|
++--------------------+-------+
+
+------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------
+Different types of links in Wikipedia - 
++-------+
+| typeOf|
++-------+
+|  other|
+|redlink|
+|   link|
++-------+
+
++-------+----------+
+| typeOf|   sum(no)|
++-------+----------+
+|  other|2294579337|
+|redlink|   3508576|
+|   link| 984979972|
++-------+----------+
+
+------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------
+Inflow vs Outflow
+Pageviews per article
++--------------------+--------+
+|          curr_title|in_count|
++--------------------+--------+
+|Computational_Che...|      69|
+|Computational_ste...|      35|
+|        Computer.com|      84|
+|    Computer_analyst|     341|
+|    Computer_monitor|   26388|
+|             Comskip|      18|
+|Concentrated_phot...|    4149|
+| Concertina_movement|     167|
+|Concord,_North_Ca...|    3282|
+|Concordance_(publ...|    1800|
++--------------------+--------+
+only showing top 10 rows
+
+Link clicks per article
++----------------------+---------+
+|prev_title            |out_count|
++----------------------+---------+
+|Oral_exam             |133      |
+|Pipe_fitting          |788      |
+|Missouri_Compromise   |5043     |
+|Tarn_Adams            |302      |
+|RStudio               |880      |
+|Automotive_design     |1736     |
+|E-textiles            |872      |
+|Madagascar_(2005_film)|11710    |
+|Computer_monitor      |3957     |
+|Removable_media       |424      |
++----------------------+---------+
+only showing top 10 rows
+
+Writing query for Inflow vs Outflow for Top 50 Most requested pages.
+------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------
+Ratio of inflow to outflow: if a person clicks on x, how many continue from there
++--------------------+---------+--------------------+---------+---------------------+
+|curr_title          |in_count |prev_title          |out_count|ratio                |
++--------------------+---------+--------------------+---------+---------------------+
+|Main_Page           |127500620|Main_Page           |29923502 |0.23469299208113656  |
+|87th_Academy_Awards |2559794  |87th_Academy_Awards |1680675  |0.656566504960946    |
+|Fifty_Shades_of_Grey|2326175  |Fifty_Shades_of_Grey|1146401  |0.4928266360011607   |
+|Alive               |2244781  |Alive               |3480     |0.0015502625868625936|
+|Chris_Kyle          |1709341  |Chris_Kyle          |869974   |0.5089528654610168   |
++--------------------+---------+--------------------+---------+---------------------+
+only showing top 5 rows
+
+------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------
+
+Traffic flow pattern for a specific article - Stephen Hawking
+
++---------------+--------+---------------+---------+-------------------+
+|     curr_title|in_count|     prev_title|out_count|              ratio|
++---------------+--------+---------------+---------+-------------------+
+|Stephen_Hawking| 1384193|Stephen_Hawking|   644088|0.46531661408488556|
++---------------+--------+---------------+---------+-------------------+
+
+What percent of page visits are from wikipedia itself?
+('Percentage of page visits in Wikipedia from other pages in Wikipedia itself: ', 6.615441199042359)
+
+------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------
+
+Top referrers to Donald Trump
++-------+------------+----+--------+-----------------------------------------+------+
+|curr_id|curr_title  |no  |prev_id |prev_title                               |typeOf|
++-------+------------+----+--------+-----------------------------------------+------+
+|4848272|Donald_Trump|97  |40061492|The_Apprentice_(U.S._season_14)          |link  |
+|4848272|Donald_Trump|918 |21377251|United_States_presidential_election,_2016|link  |
+|4848272|Donald_Trump|88  |584914  |Bill_Rancic                              |link  |
+|4848272|Donald_Trump|86  |1779738 |Roast_(comedy)                           |link  |
+|4848272|Donald_Trump|80  |156507  |Geraldo_Rivera                           |other |
+|4848272|Donald_Trump|76  |1586632 |Steve_Rubell                             |link  |
+|4848272|Donald_Trump|74  |306906  |Jamaica,_Queens                          |link  |
+|4848272|Donald_Trump|728 |8095589 |Eric_Trump                               |link  |
+|4848272|Donald_Trump|69  |1566852 |List_of_people_in_Playboy_200009         |link  |
+|4848272|Donald_Trump|6855|        |other-empty                              |other |
++-------+------------+----+--------+-----------------------------------------+------+
+
+Top referrers to all presidential candidate pages
++-------+----------------------+---+--------+---------------------------------------------+------+
+|curr_id|curr_title            |no |prev_id |prev_title                                   |typeOf|
++-------+----------------------+---+--------+---------------------------------------------+------+
+|5043192|Hillary_Rodham_Clinton|99 |58762   |Clinton                                      |link  |
+|5043192|Hillary_Rodham_Clinton|98 |201756  |Daniel_Patrick_Moynihan                      |link  |
+|2500271|Ted_Cruz              |98 |367818  |Kay_Bailey_Hutchison                         |link  |
+|4848272|Donald_Trump          |97 |40061492|The_Apprentice_(U.S._season_14)              |link  |
+|5043192|Hillary_Rodham_Clinton|956|200683  |Chelsea_Clinton                              |link  |
+|5043192|Hillary_Rodham_Clinton|95 |4395393 |Democratic_Party_presidential_primaries,_2008|link  |
+|361176 |Bernie_Sanders        |94 |2172378 |Independent_politician                       |link  |
+|4848272|Donald_Trump          |918|21377251|United_States_presidential_election,_2016    |link  |
+|361176 |Bernie_Sanders        |91 |38443580|Democratic_socialism                         |link  |
+|5043192|Hillary_Rodham_Clinton|90 |22943   |Papua_New_Guinea                             |other |
++-------+----------------------+---+--------+---------------------------------------------+------+
+
+Top referrers to Barack Obama
++-------+------------+---+--------+------------------------------------------------------------------------+------+
+|curr_id|curr_title  |no |prev_id |prev_title                                                              |typeOf|
++-------+------------+---+--------+------------------------------------------------------------------------+------+
+|534366 |Barack_Obama|99 |10973685|Craig_Robinson_(basketball)                                             |link  |
+|534366 |Barack_Obama|98 |31627026|List_of_Presidents_of_the_United_States,_sortable_by_previous_experience|link  |
+|534366 |Barack_Obama|96 |10847   |First_Lady_of_the_United_States                                         |link  |
+|534366 |Barack_Obama|96 |183895  |Presidency_of_George_W._Bush                                            |link  |
+|534366 |Barack_Obama|95 |20134780|Multiracial_American                                                    |link  |
+|534366 |Barack_Obama|94 |9031146 |List_of_Presidents_of_the_United_States_by_date_of_birth                |link  |
+|534366 |Barack_Obama|938|21377251|United_States_presidential_election,_2016                               |link  |
+|534366 |Barack_Obama|93 |16384865|Stanley_Armour_Dunham                                                   |link  |
+|534366 |Barack_Obama|93 |16906896|Presidential_portrait_(United_States)                                   |link  |
+|534366 |Barack_Obama|92 |627769  |Janet_Yellen                                                            |link  |
++-------+------------+---+--------+------------------------------------------------------------------------+------+
+only showing top 10 rows
+

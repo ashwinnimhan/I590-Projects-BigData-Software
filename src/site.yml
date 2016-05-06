@@ -38,6 +38,11 @@
     
     - name: extract
       become: yes
+      command: gunzip {{ db_dir }}/{{ datasets.1 | basename}}
+
+    - name: extract
+      become: yes
+      command: gunzip {{ db_dir }}/{{ datasets.2 | basename }}
 
     - name: fix permissions
       become: yes

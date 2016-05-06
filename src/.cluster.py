@@ -9,7 +9,7 @@ defaults = {
     'extra_disks': {},
 
     'openstack': {
-        'flavor': 'm1.small',
+        'flavor': 'm1.large',
         'image': 'CC-Ubuntu14.04',
         'key_name': gethostname(),
         'network': '{}-net'.format(os.getenv('OS_PROJECT_NAME')),

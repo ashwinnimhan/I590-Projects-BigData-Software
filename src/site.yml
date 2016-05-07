@@ -17,6 +17,7 @@
       with_items:
         - "{{ download_dir }}"
         - "{{ db_dir }}"
+        - "{{ scripts_dir }}"
 
     - name: fix permissions
       become: yes

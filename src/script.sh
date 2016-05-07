@@ -14,7 +14,7 @@ echo "setup ssh options ::"
 	ssh-add
 
 echo "configure big-data-stack ::"
-	cp  ./sw-project-template/src/{.cluster.py,ansible.cfg,site.yml} ./big-data-stack/
+	cp ./sw-project-template/src/{.cluster.py,ansible.cfg,site.yml} ./big-data-stack/
  
 echo "install big-data-stack dependencies ::"
 	pip install -r ./big-data-stack/requirements.txt
@@ -31,5 +31,5 @@ echo "setup hadoop and spark ::"
 	ansible-playbook addons/spark.yml
 
 echo "deploy artifacts(dataset) ::"
-	cd ../sw-project-template/src
+	cd ./big-data-stack
 	ansible-playbook site.yml

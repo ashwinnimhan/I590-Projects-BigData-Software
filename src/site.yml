@@ -60,7 +60,7 @@
     - name: copy the analysis scripts
       become: yes
       copy:
-        src: "{{ item }}"
+        src: "./sw-project-template/src/{{ item }}"
         dest: "{{ scripts_dir }}/{{ item | basename }}"
         owner: cc
       with_items:

@@ -1,18 +1,10 @@
-Data
-===============================================================================
 
-Datasets or intermediate files should be located in this directory. If original
-datasets are bigger than 10MB, add a link to the file in this README file and
-create a sample file which is less then 10MB and add in this directory.
+=====================================================
+Exploratory Data Analysis of English Wikipedia - Data
+=====================================================
+Sample Datasets have been added to this folder.
 
-
-TODO
--------------------------------------------------------------------------------
-
-* DO NOT ADD your large datasets in this directory
-* Make sample datasets (< 10 MB)
-* Add sample datasets only in this directory
-* Update contents of this 'README.rst' file
-* Include an address (URL or cite) of original datasets in this file
-   
-
+List of Original DataSets
+-------------------------
+- English Wikipedia pageviews by second (https://ckannet-storage.commondatastorage.googleapis.com/2015-04-26T22:07:22.853Z/pageviews-by-second-tsv.gz) (263MB)
+- Wikipedia Clickstream: Feb 2015 (https://s3-eu-west-1.amazonaws.com/pfigshare-u-files/5036383/2015_02_en_clickstream.tsv.gz) (1.2GB)

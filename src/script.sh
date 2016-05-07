@@ -5,9 +5,8 @@ echo "clone git repository ::"
 	git clone https://github.com/futuresystems/big-data-stack.git --recursive
 
 echo "load parameters ::"
-	cd ./sw-project-template/src
 	module load openstack
-	source ./CH-817724-openrc.sh
+	source ~/CH-817724-openrc.sh
 	source $HOME/bdossp_sp16/bin/activate
 
 echo "setup ssh options ::"
@@ -15,11 +14,10 @@ echo "setup ssh options ::"
 	ssh-add
 
 echo "configure big-data-stack ::"
-	cp {.cluster.py,ansible.cfg,site.yml} ../../big-data-stack/
+	cp  ./sw-project-template/src/{.cluster.py,ansible.cfg,site.yml} ./big-data-stack/
  
 echo "install big-data-stack dependencies ::"
-	cd ../../big-data-stack
-	pip install -r requirements.txt
+	pip install -r ./big-data-stack/requirements.txt
 	
 echo "create instances ::"
 	vcl boot -p openstack -P $USER-
@@ -35,9 +33,3 @@ echo "setup hadoop and spark ::"
 echo "deploy artifacts(dataset) ::"
 	cd ../sw-project-template/src
 	ansible-playbook site.yml
-
-echo "ssh into master node ::"
-echo "switch user: sudo su - hadoop"
-echo "Execute: spark-submit --master yarn --deploy-mode client /tmp/scripts/clickstream.py"
-echo "Execute: spark-submit --master yarn --deploy-mode client /tmp/scripts/pageviews.py"
-	vcl ssh master0 -- -l cc sudo su

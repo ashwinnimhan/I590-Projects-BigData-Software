@@ -39,16 +39,10 @@ Software Tools
 ---------------------
 - Ansible
 - Apache Spark
-- MLlib
-- GraphX
 - SparkSQL
 - Spark Streaming
-- NodeJS
-- MongoDB
-- Nginx
 - D3.js
-- Mesos
-- Parquet
+- Yarn
 
 Compute Resources
 ---------------------
@@ -56,15 +50,14 @@ Compute Resources
 
 System Requirements
 ---------------------
-- Size: 12 VM instances with m1.medium 
+- Size: 3 VM instances with m1.large on Chameleon 
 - OS: Ubuntu 14.04 LTS
 - Storage: 480GB
 
 List of DataSets
 ---------------------
-- English Wikipedia pageviews by second (https://ckannet-storage.commondatastorage.googleapis.com/2015-04-26T22:07:22.853Z/pageviews-by-second-tsv.gz)
-- Wikipedia Clickstream: Feb 2015 (https://s3-eu-west-1.amazonaws.com/pfigshare-u-files/5036383/2015_02_en_clickstream.tsv.gz)
-- Live Edit Stream for English Wikipedia (socket listening to stream.wikimedia.org/rc)
+- English Wikipedia pageviews by second (https://ckannet-storage.commondatastorage.googleapis.com/2015-04-26T22:07:22.853Z/pageviews-by-second-tsv.gz) (263MB)
+- Wikipedia Clickstream: Feb 2015 (https://s3-eu-west-1.amazonaws.com/pfigshare-u-files/5036383/2015_02_en_clickstream.tsv.gz) (1.2GB)
 - Other supporting datasets as required for enrichment (https://datahub.io/organization/wikimedia)
 
 Schedule

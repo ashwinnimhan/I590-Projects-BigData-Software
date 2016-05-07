@@ -1,30 +1,24 @@
-Final Report
-===============================================================================
-
-TODO
--------------------------------------------------------------------------------
-
-* Add a final report in this directory
-* Update contents of this 'README.rst' file
-
-Final Report Guideline
--------------------------------------------------------------------------------
-
-* Description of your project
-* Problem statement
-* Purpose and objectives
-* Results
-* Findings
-* Implementation
-* References
-   * original source of code snippets
-   * original source of datasets
-
-The final reports should sastify the following guidelines:
-
-* 4 - 6 pages
-* Time Roman 12 point – spacing 1.1 in Microsoft Word
-* Figures can be included
-* Proper citations must be included
-* Material may be taken from other sources but that must amount to at most 25% of original work and must be cited
-* The level should be similar to a publishable paper or technical report
+======================================
+Exploratory Data Analysis of Wikipedia
+======================================
+- Download script.sh from git src folder:
+  https://github.iu.edu/animhan/sw-project-template/blob/master/src/script.sh
+- Make sure CH-817724-openrc.sh is present under ~/. If it is not present, download it from your Chameleon Cloud Account under API access section.
+- Execute : bash script.sh
+- Check which node is master node by executing the command: nova list | grep "$USER". The master node will be named as "$USER-master0"
+- SSH using the floating IP assigned to the master node.
+- Switch to hadoop user using: sudo su - hadoop
+- Execute scripts
+    - spark-submit --master yarn --deploy-mode client /tmp/scripts/pageviews.py
+    - spark-submit --master yarn --deploy-mode client /tmp/scripts/clickstream.py
+- The results are accessible in HDFS and can be accessed by the following commands:
+    - hadoop dfs -ls /top50WikiArticles
+    - hadoop dfs -ls /top50Referers
+    - hadoop dfs -ls /top50TrendingOnTwitter
+    - hadoop dfs -ls /top50RequestedMissingPages
+    - hadoop dfs -ls /top50InflowVsOutflow
+    - hadoop dfs -ls /top50ReferersToStephenHawking
+    - hadoop dfs -ls /top50ReferersDonaldTrumph
+    - hadoop dfs -ls /top50ReferersToPresidentialCandidates
+    - hadoop dfs -ls /top50ReferersToObama
+- Visualizations of Analysis have been shared in the repository at https://github.iu.edu/animhan/sw-project-template/blob/master/viz/

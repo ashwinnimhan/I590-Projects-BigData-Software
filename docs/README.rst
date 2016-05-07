@@ -1,6 +1,9 @@
 ======================================
 Exploratory Data Analysis of Wikipedia
 ======================================
+******************************
+Instructions for deploying
+******************************
 - Download script.sh from git src folder:
   https://github.iu.edu/animhan/sw-project-template/blob/master/src/script.sh
 - Make sure CH-817724-openrc.sh is present under ~/. If it is not present, download it from your Chameleon Cloud Account under API access section.

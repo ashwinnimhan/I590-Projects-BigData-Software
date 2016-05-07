@@ -37,10 +37,10 @@ q2= q1.select(col("prev_title"),col("curr_title"),col("no").cast("Int").alias("n
 print "------------------------------------------------------------------------------------------"
 print "------------------------------------------------------------------------------------------"
 print "Top articles ..... "
-print "Writing query for top 10 wiki articles in sparkSQL to wiki to HDFS. Displaying top 10 ........"
+print "Writing query for top 10 wiki articles in sparkSQL to wiki to HDFS. Displaying top 10. This might take around 5 minutes........"
 q3 = q2.groupBy(col("curr_title")).sum().select(col("curr_title"),col("sum(no)")).orderBy(col("sum(no)").desc()).limit(50)
 q3 = q2.groupBy(col("curr_title"))
-q4 = q3.sum().select(col("curr_title"),col("sum(no)")).orderBy(col("sum(no)").desc())
+q4 = q3.sum().select(col("curr_title"),col("sum(no)")).orderBy(col("sum(no)").desc()).limit(50)
 q4.show(10, False)
 lines = q4.map(toCSVLine)
 lines.saveAsTextFile('/top50WikiArticles')
@@ -108,7 +108,7 @@ print "-------------------------------------------------------------------------
 print "Traffic flow pattern for a specific article - Stephen Hawking"
 ratio.filter(col("curr_title").like("%Stephen_Hawking%")).show()
 
-print "Which referers send most traffic to Stephen Hawking article"
+print "Which referers send most traffic to Stephen Hawking article. This might take around 5 minutes........"
 q9 = sqlContext.sql("SELECT * FROM topEntries WHERE curr_title LIKE 'Stephen_Hawking' ORDER BY no DESC LIMIT 10")
 q9.show()
 lines = q9.map(toCSVLine)
@@ -126,19 +126,19 @@ print("Percentage of page visits in Wikipedia from other pages in Wikipedia itse
 
 print "------------------------------------------------------------------------------------------"
 print "------------------------------------------------------------------------------------------"
-print "Top referrers to Donald Trump"
+print "Top referrers to Donald Trump. This might take around 5 minutes........"
 q11_0 = sqlContext.sql("SELECT * FROM entries WHERE curr_title = 'Donald_Trump' AND prev_id IS NOT NULL AND prev_title != 'Main_Page' ORDER BY no DESC limit 50")
 q11_01 = q11_0.show(10, False)
 lines = q11_0.map(toCSVLine)
 lines.saveAsTextFile('/topReferersToDonaldTrumph')
 
-print "Top referrers to all presidential candidate pages"
+print "Top referrers to all presidential candidate pages. This might take around 5 minutes........"
 q11_2 = sqlContext.sql("SELECT * FROM entries WHERE curr_title IN ('Donald_Trump', 'Bernie_Sanders', 'Hillary_Rodham_Clinton', 'Ted_Cruz') AND prev_id IS NOT NULL AND prev_title != 'Main_Page' ORDER BY no DESC limit 100")
 q11_20 = q11_2.show(10, False)
 lines = q11_2.map(toCSVLine)
 lines.saveAsTextFile('/topReferersToPresidentialCandidates')
 
-print "Top referrers to Barack Obama"
+print "Top referrers to Barack Obama. This might take around 5 minutes........"
 q11_1 = sqlContext.sql("SELECT * FROM entries WHERE curr_title = 'Barack_Obama' AND prev_id IS NOT NULL AND prev_title != 'Main_Page' ORDER BY no DESC limit 100")
 q11_10 = q11_1.show(10, False)
 lines = q11_1.map(toCSVLine)

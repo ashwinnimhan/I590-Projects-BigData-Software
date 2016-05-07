@@ -1,38 +1,27 @@
-Final Project
-===============================================================================
-
-This is a template repository for the class final project. Your project lead
-forks this repository to start working on a project. 
-
-Directory Structure
--------------------------------------------------------------------------------
-
-The following directories are required to evaluate deliverables:
-
-* docs: Final reports/additional documents are located in *docs* directory
-* src: Source codes/scripts are located in *src* directory
-* data: Sample datasets/input/intermediate files are located in *data* directory
-
-
-Instruction
--------------------------------------------------------------------------------
-
-* Fork to the @[Project Lead] repository
-   - One of project members takes a 'Project Lead' role and fork this
-     repository
-   - Other members do not fork
-   - Stay in a public repository
-* Add other team members as collaborators to your forked repository 
-   - `How to add collaborators? <https://help.github.com/articles/adding-collaborators-to-a-personal-repository/>`_
-
-Issues
--------------------------------------------------------------------------------
-
-Your team uses GitHub Issues to communicate with AIs. 
-
-1. go to your forked project repository
-2. click on "issues"
-3. if your issue hasn't been posted yet (either "open" or "closed") create a
-   new issue
-4. specify all the steps required to reproduce your problem, along with the
-   output and describe the expected result.
+======================================
+Exploratory Data Analysis of Wikipedia
+======================================
+******************************
+Instructions for deploying
+******************************
+- Download script.sh from git src folder:
+  https://github.iu.edu/animhan/sw-project-template/blob/master/src/script.sh
+- Make sure CH-817724-openrc.sh is present under ~/. If it is not present, download it from your Chameleon Cloud Account under API access section.
+- Execute : bash script.sh
+- Check which node is master node by executing the command: nova list | grep "$USER". The master node will be named as "$USER-master0"
+- SSH using the floating IP assigned to the master node.
+- Switch to hadoop user using: sudo su - hadoop
+- Execute scripts
+    - spark-submit --master yarn --deploy-mode client /tmp/scripts/pageviews.py
+    - spark-submit --master yarn --deploy-mode client /tmp/scripts/clickstream.py
+- The results are accessible in HDFS and can be accessed by the following commands:
+    - hadoop dfs -ls /top50WikiArticles
+    - hadoop dfs -ls /top50Referers
+    - hadoop dfs -ls /top50TrendingOnTwitter
+    - hadoop dfs -ls /top50RequestedMissingPages
+    - hadoop dfs -ls /top50InflowVsOutflow
+    - hadoop dfs -ls /top50ReferersToStephenHawking
+    - hadoop dfs -ls /top50ReferersDonaldTrumph
+    - hadoop dfs -ls /top50ReferersToPresidentialCandidates
+    - hadoop dfs -ls /top50ReferersToObama
+- Visualizations of Analysis have been shared in the repository at https://github.iu.edu/animhan/sw-project-template/blob/master/viz/

@@ -1,57 +1,27 @@
-Examples
-===============================================================================
-
-TODO
--------------------------------------------------------------------------------
-
-* Add examples (at least one) in this directory
-* Update contents of this 'README.rst' file
-
-Example Guideline
--------------------------------------------------------------------------------
-
-- Describe prerequisite e.g. compile code, set environment variables, or
-  prepare input files 
-- Describe commands/steps to run your example program. 
-- Describe output messages/files.
-
-For instance, if you have a word count example, example instructions look like
-the following.
-
-Example (Word Count)
--------------------------------------------------------------------------------
-
-- Confirm environment variables
-  ::
-
-    export JAVA_HOME=/usr/java/default
-    export PATH=${JAVA_HOME}/bin:${PATH}
-    export HADOOP_CLASSPATH=${JAVA_HOME}/lib/tools.jar
-
-- Compile programs::
-  
-  $ bin/hadoop com.sun.tools.javac.Main WordCount.java
-  $ jar cf wc.jar WordCount*.class
-
-- Prepare input files where /usr/joe/wordcount/ is a main directory in HDFS::
-
-  $ bin/hadoop fs -ls /user/joe/wordcount/input/ /user/joe/wordcount/input/file01 /user/joe/wordcount/input/file02
-
-  $ bin/hadoop fs -cat /user/joe/wordcount/input/file01
-  Hello World Bye World
-
-  $ bin/hadoop fs -cat /user/joe/wordcount/input/file02
-  Hello Hadoop Goodbye Hadoop
-
-- Run::
-
-  $ bin/hadoop jar wc.jar WordCount /user/joe/wordcount/input /user/joe/wordcount/output
-
-- Find output::
-
-  $ bin/hadoop fs -cat /user/joe/wordcount/output/part-r-00000`
-  Bye 1
-  Goodbye 1
-  Hadoop 2
-  Hello 2
-  World 2`
+======================================
+Exploratory Data Analysis of Wikipedia
+======================================
+******************************
+Instructions for deploying
+******************************
+- Download script.sh from git src folder:
+  https://github.iu.edu/animhan/sw-project-template/blob/master/src/script.sh
+- Make sure CH-817724-openrc.sh is present under ~/. If it is not present, download it from your Chameleon Cloud Account under API access section.
+- Execute : bash script.sh
+- Check which node is master node by executing the command: nova list | grep "$USER". The master node will be named as "$USER-master0"
+- SSH using the floating IP assigned to the master node.
+- Switch to hadoop user using: sudo su - hadoop
+- Execute scripts
+    - spark-submit --master yarn --deploy-mode client /tmp/scripts/pageviews.py
+    - spark-submit --master yarn --deploy-mode client /tmp/scripts/clickstream.py
+- The results are accessible in HDFS and can be accessed by the following commands:
+    - hadoop dfs -ls /top50WikiArticles
+    - hadoop dfs -ls /top50Referers
+    - hadoop dfs -ls /top50TrendingOnTwitter
+    - hadoop dfs -ls /top50RequestedMissingPages
+    - hadoop dfs -ls /top50InflowVsOutflow
+    - hadoop dfs -ls /top50ReferersToStephenHawking
+    - hadoop dfs -ls /top50ReferersDonaldTrumph
+    - hadoop dfs -ls /top50ReferersToPresidentialCandidates
+    - hadoop dfs -ls /top50ReferersToObama
+- Visualizations of Analysis have been shared in the repository at https://github.iu.edu/animhan/sw-project-template/blob/master/viz/

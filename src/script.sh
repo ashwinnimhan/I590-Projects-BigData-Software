@@ -17,7 +17,7 @@ echo "configure big-data-stack ::"
 	cp ./sw-project-template/src/{.cluster.py,ansible.cfg,site.yml} ./big-data-stack/
  
 echo "install big-data-stack dependencies ::"
-	CD ./big-data-stack
+	cd ./big-data-stack
 	pip install -r requirements.txt
 	
 echo "create instances ::"
